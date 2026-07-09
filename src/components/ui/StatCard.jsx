@@ -4,8 +4,8 @@ export default function StatCard({ title, value, icon: Icon, accent = "primary",
   const isPlaceholder = value === null || value === undefined;
 
   const variant =
-    accent === "rose"
-      ? { circle: "bg-rose-100", icon: "text-rose-500", bar: "bg-rose-500" }
+    accent === "rose" || accent === "danger"
+      ? { circle: "bg-danger/10", icon: "text-danger", bar: "bg-danger" }
       : { circle: "bg-primary-light", icon: "text-primary", bar: "bg-primary" };
 
   function format(val) {

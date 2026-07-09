@@ -120,7 +120,7 @@ export default function GastosOperativos() {
       {/* Summary cards — full width, outside the form/list grid */}
       <div className="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
         <div className="group relative overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-border transition-all hover:shadow-md">
-          <div className="h-1 w-full bg-rose-500" />
+          <div className="h-1 w-full bg-danger" />
           <div className="p-4 sm:p-5">
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0 flex-1">
@@ -129,15 +129,15 @@ export default function GastosOperativos() {
                   {formatCurrency(todayTotal)}
                 </p>
               </div>
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-rose-100 sm:h-10 sm:w-10">
-                <Clock className="h-4 w-4 text-rose-500 sm:h-5 sm:w-5" />
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-danger/10 sm:h-10 sm:w-10">
+                <Clock className="h-4 w-4 text-danger sm:h-5 sm:w-5" />
               </div>
             </div>
           </div>
         </div>
 
         <div className="group relative overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-border transition-all hover:shadow-md">
-          <div className="h-1 w-full bg-primary" />
+          <div className="h-1 w-full bg-danger" />
           <div className="p-4 sm:p-5">
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0 flex-1">
@@ -146,15 +146,15 @@ export default function GastosOperativos() {
                   {formatCurrency(weekTotal)}
                 </p>
               </div>
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary-light sm:h-10 sm:w-10">
-                <TrendingUp className="h-4 w-4 text-primary sm:h-5 sm:w-5" />
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-danger/10 sm:h-10 sm:w-10">
+                <TrendingUp className="h-4 w-4 text-danger sm:h-5 sm:w-5" />
               </div>
             </div>
           </div>
         </div>
 
         <div className="group relative overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-border transition-all hover:shadow-md">
-          <div className="h-1 w-full bg-rose-500" />
+          <div className="h-1 w-full bg-danger" />
           <div className="p-4 sm:p-5">
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0 flex-1">
@@ -163,8 +163,8 @@ export default function GastosOperativos() {
                   {formatCurrency(monthTotal)}
                 </p>
               </div>
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-rose-100 sm:h-10 sm:w-10">
-                <Calendar className="h-4 w-4 text-rose-500 sm:h-5 sm:w-5" />
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-danger/10 sm:h-10 sm:w-10">
+                <Calendar className="h-4 w-4 text-danger sm:h-5 sm:w-5" />
               </div>
             </div>
           </div>

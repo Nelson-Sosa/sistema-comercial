@@ -91,7 +91,7 @@ const statDefs = [
   // Inventario
   { key: "productosVendidos", title: "Prod. vendidos (mes)", icon: ShoppingBag, accent: "primary", kind: "number" },
   { key: "stockBajo", title: "Stock bajo", icon: AlertTriangle, accent: "rose", kind: "number" },
-  { key: "agotados", title: "Productos agotados", icon: XCircle, accent: "primary", kind: "number" },
+  { key: "agotados", title: "Productos agotados", icon: XCircle, accent: "danger", kind: "number" },
 ];
 
 // ---------------------------------------------------------------------------
