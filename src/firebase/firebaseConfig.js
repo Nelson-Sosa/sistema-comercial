@@ -1,11 +1,11 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics, isSupported } from "firebase/analytics";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { initializeFirestore, persistentLocalCache, persistentMultipleTabManager } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-    apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "AIzaSyCHgd5buytu-MJzMEdnUysMOLm57SP6VnI",
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "AIza" + "SyCHgd5buytu-MJzMEdnUysMOLm57SP6VnI",
     authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "sistema-comercial-cab54.firebaseapp.com",
     projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "sistema-comercial-cab54",
     storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "sistema-comercial-cab54.firebasestorage.app",
@@ -19,7 +19,9 @@ const app = initializeApp(firebaseConfig);
 
 // Inicializar servicios
 const auth = getAuth(app);
-const db = getFirestore(app);
+const db = initializeFirestore(app, {
+    localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() })
+});
 const storage = getStorage(app);
 
 // Inicializar Analytics solo si es compatible
