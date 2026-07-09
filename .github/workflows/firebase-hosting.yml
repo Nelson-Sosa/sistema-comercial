@@ -13,6 +13,7 @@ concurrency:
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
@@ -35,7 +36,7 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           channelId: live
-          projectId: mundo-tin-tin
+          projectId: sistema-comercial
 
       - name: Deploy preview (PR)
         if: github.event_name == 'pull_request'
@@ -43,4 +44,4 @@ jobs:
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-          projectId: mundo-tin-tin
+          projectId: sistema-comercial

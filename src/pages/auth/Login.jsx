@@ -52,12 +52,12 @@ export default function Login() {
       <div className="w-full max-w-md space-y-8 rounded-xl bg-white p-8 shadow-sm ring-1 ring-primary-soft">
         <div className="text-center">
           <img
-            src="/logoMundoTIN-TIN-sinFodno.png"
-            alt="Mundo TIN-TIN"
+            src="/logo.png"
+            alt="Sistema Comercial"
             className="mx-auto h-16 w-auto sm:h-20"
           />
           <h1 className="mt-4 text-xl font-bold text-gray-800 sm:text-2xl">
-            Mundo TIN-TIN
+            Sistema Comercial
           </h1>
           <p className="text-sm text-gray-500">Sistema de gestión</p>
         </div>

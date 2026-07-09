@@ -115,8 +115,8 @@ export default function Sidebar({ collapsed, mobileOpen, onClose, onToggle }) {
         <div className="flex h-[72px] shrink-0 items-center border-b border-border px-4">
           <div className="flex items-center gap-2.5 min-w-0">
             <img
-              src="/logoMundoTIN-TIN-sinFodno.png"
-              alt="Mundo TIN-TIN"
+              src="/logo.png"
+              alt="Sistema Comercial"
               className={`shrink-0 object-contain transition-all duration-300 ${
                 collapsed ? "h-9 w-9" : "h-10 w-auto"
               }`}
@@ -127,7 +127,7 @@ export default function Sidebar({ collapsed, mobileOpen, onClose, onToggle }) {
               }`}
             >
               <p className="truncate text-base font-extrabold tracking-tight text-gray-800 sm:text-lg">
-                Mundo TIN-TIN
+                Sistema Comercial
               </p>
               <p className="truncate text-[11px] font-medium text-gray-600 leading-tight">
                 Administración del Negocio

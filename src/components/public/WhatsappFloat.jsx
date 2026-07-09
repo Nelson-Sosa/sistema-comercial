@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { getWhatsappNumber } from "../../services/settingsService";
 
-const CATALOG_MSG = "Hola, vi el catálogo de Mundo TIN-TIN y quisiera hacer una consulta 😊";
-const DETAIL_MSG = "Hola, quisiera consultar por un producto que vi en el catálogo de Mundo TIN-TIN";
+const CATALOG_MSG = "Hola, vi el catálogo y quisiera hacer una consulta 😊";
+const DETAIL_MSG = "Hola, quisiera consultar por un producto que vi en el catálogo";
 
 function buildUrl(phone, isDetail) {
   const text = isDetail ? DETAIL_MSG : CATALOG_MSG;

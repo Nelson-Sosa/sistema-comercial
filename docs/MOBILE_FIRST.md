@@ -1,8 +1,8 @@
 # Prompt Profesional — Arquitectura Responsive Mobile First
 
-## Sistema: Mundo TIN-TIN
+## Sistema: Sistema Comercial
 
-A partir de este momento, todo el sistema Mundo TIN-TIN debe desarrollarse siguiendo una arquitectura **Mobile First**, priorizando la experiencia de uso en teléfonos móviles y tablets.
+A partir de este momento, todo el sistema Sistema Comercial debe desarrollarse siguiendo una arquitectura **Mobile First**, priorizando la experiencia de uso en teléfonos móviles y tablets.
 
 ---
 

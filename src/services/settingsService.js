@@ -15,7 +15,7 @@ export async function getBusinessSettings() {
   }
   return {
     whatsappNumber: import.meta.env.VITE_WHATSAPP_NUMBER || "",
-    businessName: "Mundo TIN-TIN",
+    businessName: "Sistema Comercial",
   };
 }
 
