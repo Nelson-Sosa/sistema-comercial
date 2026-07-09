@@ -301,7 +301,7 @@ export default function Catalog() {
           {visibleProducts.map((product, index) => {
             if (visibleProducts.length === index + 1) {
               return (
-                <div ref={lastElementRef} key={product.id}>
+                <div ref={lastElementRef} key={product.id} className="h-full">
                   <ProductCard product={product} />
                 </div>
               );

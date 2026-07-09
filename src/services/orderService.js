@@ -151,6 +151,7 @@ export async function getOrdersWithFilters({
     const name = clientName.trim();
     constraints.push(where("clientName", ">=", name));
     constraints.push(where("clientName", "<", name + "\uf8ff"));
+    constraints.push(orderBy("clientName", "asc"));
   }
 
   constraints.push(orderBy("createdAt", "desc"));

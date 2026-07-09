@@ -13,7 +13,7 @@ function ProductCardBase({ product }) {
   const isOutOfStock = product.stock <= 0;
 
   return (
-    <div className="group flex flex-col overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-border transition-all hover:shadow-md">
+    <div className="group flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-border transition-all hover:shadow-md">
       {/* Imagen de catálogo — c_fill 600×600, optimizada para grids */}
       <div className="relative aspect-square overflow-hidden bg-gray-50">
         <ProductImage
