@@ -4,25 +4,21 @@ import * as productService from "../services/productService";
 export function useProducts() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const mountedRef = useRef(true);
 
   useEffect(() => {
-    mountedRef.current = true;
-    load();
-    return () => { mountedRef.current = false; };
+    setLoading(true);
+    const unsubscribe = productService.subscribeToProducts(
+      (data) => {
+        setProducts(data);
+        setLoading(false);
+      },
+      (error) => {
+        console.error("Error al cargar productos:", error);
+        setLoading(false);
+      }
+    );
+    return () => unsubscribe();
   }, []);
 
-  async function load() {
-    setLoading(true);
-    try {
-      const data = await productService.getProducts();
-      if (mountedRef.current) setProducts(data);
-    } catch {
-      // handled by page
-    } finally {
-      if (mountedRef.current) setLoading(false);
-    }
-  }
-
-  return { products, loading, reload: load };
+  return { products, loading, reload: () => {} };
 }

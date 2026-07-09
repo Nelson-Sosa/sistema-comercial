@@ -11,6 +11,7 @@ import {
   orderBy,
   serverTimestamp,
   runTransaction,
+  onSnapshot,
 } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 import { uploadImage as cloudinaryUpload } from "./cloudinary";
@@ -32,6 +33,30 @@ export async function getProducts() {
     ...doc.data(),
     categoryName: catMap[doc.data().categoryId] || "Sin categoría",
   }));
+}
+
+export function subscribeToProducts(onData, onError) {
+  const q = query(collection(db, COLLECTION), orderBy("name", "asc"));
+  return onSnapshot(
+    q,
+    async (snapshot) => {
+      try {
+        const categories = await getCategories();
+        const catMap = Object.fromEntries(categories.map((c) => [c.id, c.name]));
+        const products = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+          categoryName: catMap[doc.data().categoryId] || "Sin categoría",
+        }));
+        onData(products);
+      } catch (err) {
+        if (onError) onError(err);
+      }
+    },
+    (err) => {
+      if (onError) onError(err);
+    }
+  );
 }
 
 export async function getProductById(id) {

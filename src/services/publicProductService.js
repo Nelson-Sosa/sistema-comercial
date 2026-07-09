@@ -1,4 +1,4 @@
-import { collection, getDocs, query, orderBy, doc, getDoc } from "firebase/firestore";
+import { collection, getDocs, query, orderBy, doc, getDoc, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 
 const PRODUCTS_COLLECTION = "products";
@@ -23,6 +23,40 @@ export async function getActiveProducts() {
       categoryName: catMap[doc.data().categoryId] || "Sin categoría",
     }))
     .filter((p) => p.status === "active");
+}
+
+export function subscribeToActiveProducts(onData, onError) {
+  const q = query(
+    collection(db, PRODUCTS_COLLECTION),
+    orderBy("name", "asc")
+  );
+
+  return onSnapshot(
+    q,
+    async (snapshot) => {
+      try {
+        const catSnap = await getDocs(collection(db, CATEGORIES_COLLECTION));
+        const catMap = Object.fromEntries(
+          catSnap.docs.map((d) => [d.id, d.data().name])
+        );
+
+        const products = snapshot.docs
+          .map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+            categoryName: catMap[doc.data().categoryId] || "Sin categoría",
+          }))
+          .filter((p) => p.status === "active");
+
+        onData(products);
+      } catch (err) {
+        if (onError) onError(err);
+      }
+    },
+    (err) => {
+      if (onError) onError(err);
+    }
+  );
 }
 
 export async function getActiveProductById(id) {

@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo, useRef, useCallback } from "react";
 import { Search, SlidersHorizontal, X, Package } from "lucide-react";
-import { getActiveProducts } from "../../services/publicProductService";
+import { subscribeToActiveProducts } from "../../services/publicProductService";
 import ProductCard from "../../components/public/ProductCard";
 import BottomSheet from "../../components/ui/BottomSheet";
 
@@ -23,14 +23,21 @@ export default function Catalog() {
   const [visibleCount, setVisibleCount] = useState(20);
 
   useEffect(() => {
-    getActiveProducts()
-      .then((data) => {
+    setLoading(true);
+    const unsubscribe = subscribeToActiveProducts(
+      (data) => {
         setProducts(data);
         const cats = [...new Set(data.map((p) => p.categoryName).filter(Boolean))];
         setCategories(cats.sort());
-      })
-      .catch(() => {})
-      .finally(() => setLoading(false));
+        setLoading(false);
+      },
+      (error) => {
+        console.error("Error subscribing to products:", error);
+        setLoading(false);
+      }
+    );
+
+    return () => unsubscribe();
   }, []);
 
   const filtered = useMemo(() => {
