@@ -5,6 +5,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import toast from "react-hot-toast";
 import { useAuth } from "../../context/AuthContext";
+import { BRAND } from "../../config/brand";
 
 const loginSchema = z.object({
   email: z.string().email("Correo electrónico inválido"),
@@ -52,14 +53,14 @@ export default function Login() {
       <div className="w-full max-w-md space-y-8 rounded-xl bg-white p-8 shadow-sm ring-1 ring-primary-soft">
         <div className="text-center">
           <img
-            src="/logo.png"
-            alt="Sistema Comercial"
-            className="mx-auto h-16 w-auto sm:h-20"
+            src={BRAND.logo}
+            alt={BRAND.name}
+            className="mx-auto h-32 w-auto sm:h-40 object-contain"
           />
           <h1 className="mt-4 text-xl font-bold text-gray-800 sm:text-2xl">
-            Sistema Comercial
+            Bienvenido a {BRAND.name}
           </h1>
-          <p className="text-sm text-gray-500">Sistema de gestión</p>
+          <p className="text-sm text-gray-500">{BRAND.slogan}</p>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-5">

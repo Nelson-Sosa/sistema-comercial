@@ -15,6 +15,7 @@ import {
   ClipboardList,
 } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
+import { BRAND } from "../../config/brand";
 
 const mainNav = [
   { name: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
@@ -43,9 +44,8 @@ export default function Sidebar({ collapsed, mobileOpen, onClose, onToggle }) {
             <item.icon className="h-5 w-5 text-gray-400" />
           </div>
           <span
-            className={`overflow-hidden whitespace-nowrap transition-all duration-300 ${
-              collapsed ? "max-w-0 opacity-0" : "ml-3 max-w-40 opacity-100"
-            }`}
+            className={`overflow-hidden whitespace-nowrap transition-all duration-300 ${collapsed ? "max-w-0 opacity-0" : "ml-3 max-w-40 opacity-100"
+              }`}
           >
             {item.name}
           </span>
@@ -63,10 +63,9 @@ export default function Sidebar({ collapsed, mobileOpen, onClose, onToggle }) {
       <NavLink
         to={item.href}
         className={({ isActive: active }) =>
-          `relative flex items-center rounded-lg text-sm font-medium transition-all duration-200 ${
-            active
-              ? "bg-primary-light text-primary font-semibold"
-              : "text-gray-700 hover:bg-primary-light/50 hover:text-primary"
+          `relative flex items-center rounded-lg text-sm font-medium transition-all duration-200 ${active
+            ? "bg-primary-light text-primary font-semibold"
+            : "text-gray-700 hover:bg-primary-light/50 hover:text-primary"
           } ${collapsed ? "px-3 py-3 justify-center" : "px-3 py-3"}`
         }
       >
@@ -77,15 +76,13 @@ export default function Sidebar({ collapsed, mobileOpen, onClose, onToggle }) {
             )}
             <div className="flex w-6 shrink-0 items-center justify-center">
               <item.icon
-                className={`h-5 w-5 transition-colors ${
-                  active ? "text-primary" : "text-gray-500 group-hover:text-primary"
-                }`}
+                className={`h-5 w-5 transition-colors ${active ? "text-primary" : "text-gray-500 group-hover:text-primary"
+                  }`}
               />
             </div>
             <span
-              className={`overflow-hidden whitespace-nowrap transition-all duration-300 ${
-                collapsed ? "max-w-0 opacity-0" : "ml-3 max-w-40 opacity-100"
-              }`}
+              className={`overflow-hidden whitespace-nowrap transition-all duration-300 ${collapsed ? "max-w-0 opacity-0" : "ml-3 max-w-40 opacity-100"
+                }`}
             >
               {item.name}
             </span>
@@ -99,9 +96,8 @@ export default function Sidebar({ collapsed, mobileOpen, onClose, onToggle }) {
     return (
       <div className="mb-2 px-3 text-[11px] font-semibold uppercase tracking-wider text-gray-500">
         <span
-          className={`overflow-hidden whitespace-nowrap transition-all duration-300 ${
-            collapsed ? "max-w-0 opacity-0" : "max-w-40 opacity-100"
-          }`}
+          className={`overflow-hidden whitespace-nowrap transition-all duration-300 ${collapsed ? "max-w-0 opacity-0" : "max-w-40 opacity-100"
+            }`}
         >
           {text}
         </span>
@@ -112,25 +108,23 @@ export default function Sidebar({ collapsed, mobileOpen, onClose, onToggle }) {
   function SidebarContent() {
     return (
       <div className="flex h-full flex-col bg-white">
-        <div className="flex h-[72px] shrink-0 items-center border-b border-border px-4">
+        <div className="flex h-24 shrink-0 items-center border-b border-border px-4">
           <div className="flex items-center gap-2.5 min-w-0">
             <img
-              src="/logo.png"
-              alt="Sistema Comercial"
-              className={`shrink-0 object-contain transition-all duration-300 ${
-                collapsed ? "h-9 w-9" : "h-10 w-auto"
-              }`}
+              src={BRAND.logo}
+              alt={BRAND.name}
+              className={`shrink-0 object-contain transition-all duration-300 ${collapsed ? "h-14 w-14" : "h-24 w-auto"
+                }`}
             />
             <div
-              className={`flex-1 min-w-0 overflow-hidden whitespace-nowrap transition-all duration-300 ${
-                collapsed ? "max-w-0 opacity-0" : "max-w-full opacity-100"
-              }`}
+              className={`flex-1 min-w-0 overflow-hidden whitespace-nowrap transition-all duration-300 ${collapsed ? "max-w-0 opacity-0" : "max-w-full opacity-100"
+                }`}
             >
               <p className="truncate text-base font-extrabold tracking-tight text-gray-800 sm:text-lg">
-                Sistema Comercial
+                {BRAND.name}
               </p>
               <p className="truncate text-[11px] font-medium text-gray-600 leading-tight">
-                Administración del Negocio
+                {BRAND.fullName}
               </p>
             </div>
           </div>
@@ -174,9 +168,8 @@ export default function Sidebar({ collapsed, mobileOpen, onClose, onToggle }) {
               <LogOut className="h-5 w-5" />
             </div>
             <span
-              className={`overflow-hidden whitespace-nowrap transition-all duration-300 ${
-                collapsed ? "max-w-0 opacity-0" : "ml-3 max-w-40 opacity-100"
-              }`}
+              className={`overflow-hidden whitespace-nowrap transition-all duration-300 ${collapsed ? "max-w-0 opacity-0" : "ml-3 max-w-40 opacity-100"
+                }`}
             >
               Cerrar sesión
             </span>
@@ -189,9 +182,8 @@ export default function Sidebar({ collapsed, mobileOpen, onClose, onToggle }) {
   return (
     <>
       <aside
-        className={`fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-border shadow-sm transition-all duration-300 max-lg:data-[state=closed]:-translate-x-full ${
-          collapsed ? "lg:w-16" : "lg:w-72"
-        }`}
+        className={`fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-border shadow-sm transition-all duration-300 max-lg:data-[state=closed]:-translate-x-full ${collapsed ? "lg:w-16" : "lg:w-72"
+          }`}
         data-state={mobileOpen ? "open" : "closed"}
       >
         <SidebarContent />

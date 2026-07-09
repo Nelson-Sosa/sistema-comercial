@@ -1,21 +1,22 @@
 import { Outlet, Link } from "react-router-dom";
 import { LogIn } from "lucide-react";
 import WhatsappFloat from "./WhatsappFloat";
+import { BRAND } from "../../config/brand";
 
 export default function PublicLayout() {
   return (
     <div className="min-h-screen bg-background-secondary">
       <header className="sticky top-0 z-40 border-b border-border bg-white/80 shadow-sm backdrop-blur-md">
-        <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link to="/catalogo" className="flex items-center gap-3 min-w-0">
             <img
-              src="/logo.png"
-              alt="Sistema Comercial"
-              className="h-10 w-auto shrink-0 object-contain"
+              src={BRAND.logo}
+              alt={BRAND.name}
+              className="h-24 w-auto shrink-0 object-contain"
             />
             <div className="min-w-0">
               <p className="truncate text-base font-extrabold tracking-tight text-gray-800 sm:text-lg">
-                Sistema Comercial
+                {BRAND.name}
               </p>
               <p className="-mt-0.5 truncate text-[11px] font-medium text-gray-500">
                 Catálogo de productos
@@ -41,7 +42,7 @@ export default function PublicLayout() {
       <WhatsappFloat />
 
       <footer className="border-t border-border bg-white py-6 text-center text-xs text-gray-400">
-        &copy; {new Date().getFullYear()} Sistema Comercial &mdash; Todos los derechos reservados.
+        &copy; {new Date().getFullYear()} {BRAND.name} - {BRAND.fullName} &mdash; Todos los derechos reservados.
       </footer>
     </div>
   );
