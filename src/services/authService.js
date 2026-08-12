@@ -8,7 +8,7 @@ import {
 import { doc, setDoc, getDoc, serverTimestamp } from "firebase/firestore";
 import { auth, db, googleProvider } from "../firebase/firebaseConfig";
 
-async function ensureUserDoc(uid, email) {
+export async function ensureUserDoc(uid, email) {
   const userDoc = await getDoc(doc(db, "users", uid));
 
   if (!userDoc.exists()) {

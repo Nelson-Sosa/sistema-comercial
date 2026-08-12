@@ -7,7 +7,7 @@ import {
   registerWithEmailPassword,
   logout as authLogout,
   getUserData,
-  handleRedirectResult,
+  ensureUserDoc,
 } from "../services/authService";
 
 const AuthContext = createContext(null);
@@ -27,7 +27,8 @@ export function AuthProvider({ children }) {
         try {
           let userData = await getUserData(firebaseUser.uid);
           if (!userData) {
-            userData = await handleRedirectResult();
+            // Si el usuario se autenticó pero no tiene documento en Firestore (ej. Google Login por primera vez)
+            userData = await ensureUserDoc(firebaseUser.uid, firebaseUser.email);
           }
           setUser(userData ? { ...firebaseUser, ...userData } : firebaseUser);
         } catch (err) {
