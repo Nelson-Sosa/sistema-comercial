@@ -136,7 +136,13 @@ export default function Login() {
           onClick={async () => {
             setIsGoogleSubmitting(true);
             try {
-              await loginWithGoogle();
+              const userData = await loginWithGoogle();
+              toast.success("Inicio de sesión exitoso");
+              if (userData && userData.role === "admin") {
+                navigate("/admin/dashboard");
+              } else {
+                navigate("/catalogo");
+              }
             } catch (error) {
               if (error.code === "auth/popup-closed-by-user") return;
               toast.error("Error al iniciar sesión con Google");

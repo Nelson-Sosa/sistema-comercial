@@ -1,8 +1,7 @@
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signInWithRedirect,
-  getRedirectResult,
+  signInWithPopup,
   signOut,
 } from "firebase/auth";
 import { doc, setDoc, getDoc, serverTimestamp } from "firebase/firestore";
@@ -40,12 +39,7 @@ export async function logout() {
 }
 
 export async function loginWithGoogle() {
-  await signInWithRedirect(auth, googleProvider);
-}
-
-export async function handleRedirectResult() {
-  const result = await getRedirectResult(auth);
-  if (!result || !result.user) return null;
+  const result = await signInWithPopup(auth, googleProvider);
   const { uid, email } = result.user;
   return ensureUserDoc(uid, email);
 }

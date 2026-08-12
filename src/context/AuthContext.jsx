@@ -59,7 +59,10 @@ export function AuthProvider({ children }) {
   async function loginWithGoogle() {
     authOperationRef.current = true;
     try {
-      await googleLogin();
+      const userData = await googleLogin();
+      const firebaseUser = auth.currentUser;
+      setUser({ ...firebaseUser, ...userData });
+      return userData;
     } finally {
       authOperationRef.current = false;
     }
