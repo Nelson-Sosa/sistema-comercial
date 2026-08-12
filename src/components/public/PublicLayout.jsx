@@ -1,11 +1,11 @@
 import { Outlet, Link } from "react-router-dom";
-import { LogIn, LayoutDashboard } from "lucide-react";
+import { LogIn, LayoutDashboard, LogOut } from "lucide-react";
 import WhatsappFloat from "./WhatsappFloat";
 import { BRAND } from "../../config/brand";
 import { useAuth } from "../../context/AuthContext";
 
 export default function PublicLayout() {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   return (
     <div className="min-h-screen bg-background-secondary">
       <header className="sticky top-0 z-40 border-b border-border bg-white/80 shadow-sm backdrop-blur-md">
@@ -27,14 +27,25 @@ export default function PublicLayout() {
           </Link>
 
           {user ? (
-            <Link
-              to="/admin/dashboard"
-              className="inline-flex shrink-0 items-center gap-1.5 rounded-xl border border-primary bg-primary px-4 py-2 text-sm font-medium text-white shadow-sm transition-all hover:bg-primary-dark hover:shadow-md"
-            >
-              <LayoutDashboard className="h-4 w-4" />
-              <span className="hidden sm:inline">Ir al Panel</span>
-              <span className="sm:hidden">Panel</span>
-            </Link>
+            user.role === "admin" ? (
+              <Link
+                to="/admin/dashboard"
+                className="inline-flex shrink-0 items-center gap-1.5 rounded-xl border border-primary bg-primary px-4 py-2 text-sm font-medium text-white shadow-sm transition-all hover:bg-primary-dark hover:shadow-md"
+              >
+                <LayoutDashboard className="h-4 w-4" />
+                <span className="hidden sm:inline">Ir al Panel</span>
+                <span className="sm:hidden">Panel</span>
+              </Link>
+            ) : (
+              <button
+                onClick={() => logout()}
+                className="inline-flex shrink-0 items-center gap-1.5 rounded-xl border border-border bg-white px-4 py-2 text-sm font-medium text-gray-600 shadow-sm transition-all hover:border-danger hover:text-danger hover:shadow-md"
+              >
+                <LogOut className="h-4 w-4" />
+                <span className="hidden sm:inline">Cerrar sesión</span>
+                <span className="sm:hidden">Salir</span>
+              </button>
+            )
           ) : (
             <Link
               to="/login"
