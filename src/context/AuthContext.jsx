@@ -7,6 +7,7 @@ import {
   registerWithEmailPassword,
   logout as authLogout,
   getUserData,
+  handleRedirectResult,
 } from "../services/authService";
 
 const AuthContext = createContext(null);
@@ -24,7 +25,10 @@ export function AuthProvider({ children }) {
           return;
         }
         try {
-          const userData = await getUserData(firebaseUser.uid);
+          let userData = await getUserData(firebaseUser.uid);
+          if (!userData) {
+            userData = await handleRedirectResult();
+          }
           setUser(userData ? { ...firebaseUser, ...userData } : firebaseUser);
         } catch (err) {
           console.error("[Auth] Error fetching user data:", err);
@@ -54,10 +58,7 @@ export function AuthProvider({ children }) {
   async function loginWithGoogle() {
     authOperationRef.current = true;
     try {
-      const userData = await googleLogin();
-      const firebaseUser = auth.currentUser;
-      setUser({ ...firebaseUser, ...userData });
-      return userData;
+      await googleLogin();
     } finally {
       authOperationRef.current = false;
     }

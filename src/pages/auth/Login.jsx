@@ -123,12 +123,9 @@ export default function Login() {
             setIsGoogleSubmitting(true);
             try {
               await loginWithGoogle();
-              toast.success("Inicio de sesión exitoso");
-              navigate("/dashboard");
             } catch (error) {
-              if (error.code !== "auth/popup-closed-by-user") {
-                toast.error("Error al iniciar sesión con Google");
-              }
+              if (error.code === "auth/popup-closed-by-user") return;
+              toast.error("Error al iniciar sesión con Google");
             } finally {
               setIsGoogleSubmitting(false);
             }
