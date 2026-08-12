@@ -37,14 +37,33 @@ export default function PublicLayout() {
                 <span className="sm:hidden">Panel</span>
               </Link>
             ) : (
-              <button
-                onClick={() => logout()}
-                className="inline-flex shrink-0 items-center gap-1.5 rounded-xl border border-border bg-white px-4 py-2 text-sm font-medium text-gray-600 shadow-sm transition-all hover:border-danger hover:text-danger hover:shadow-md"
-              >
-                <LogOut className="h-4 w-4" />
-                <span className="hidden sm:inline">Cerrar sesión</span>
-                <span className="sm:hidden">Salir</span>
-              </button>
+              <div className="flex shrink-0 items-center gap-2">
+                {/* Avatar: foto de Google o iniciales */}
+                {user.photoURL ? (
+                  <img
+                    src={user.photoURL}
+                    alt="avatar"
+                    className="h-8 w-8 rounded-full border-2 border-primary-soft object-cover"
+                  />
+                ) : (
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-xs font-bold text-white">
+                    {(user.email || "U")[0].toUpperCase()}
+                  </div>
+                )}
+                {/* Email del usuario (solo en pantallas medianas y mayores) */}
+                <span className="hidden max-w-[120px] truncate text-sm font-medium text-gray-700 md:block">
+                  {user.email}
+                </span>
+                {/* Botón de cerrar sesión */}
+                <button
+                  onClick={() => logout()}
+                  title="Cerrar sesión"
+                  className="inline-flex shrink-0 items-center gap-1.5 rounded-xl border border-border bg-white px-3 py-2 text-sm font-medium text-gray-600 shadow-sm transition-all hover:border-danger hover:text-danger hover:shadow-md"
+                >
+                  <LogOut className="h-4 w-4" />
+                  <span className="hidden sm:inline">Cerrar sesión</span>
+                </button>
+              </div>
             )
           ) : (
             <Link
