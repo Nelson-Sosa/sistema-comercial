@@ -34,9 +34,13 @@ export default function Register() {
   async function onSubmit(data) {
     setIsSubmitting(true);
     try {
-      await registerUser(data.email, data.password);
+      const userData = await registerUser(data.email, data.password);
       toast.success("Cuenta creada exitosamente");
-      navigate("/dashboard");
+      if (userData && userData.role === "admin") {
+        navigate("/admin/dashboard");
+      } else {
+        navigate("/catalogo");
+      }
     } catch (error) {
       console.error("[Auth] Register error:", error.code, error.message);
       const messages = {
