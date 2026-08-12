@@ -20,7 +20,11 @@ export default function Login() {
 
   useEffect(() => {
     if (user) {
-      navigate("/admin/dashboard");
+      if (user.role === "admin") {
+        navigate("/admin/dashboard");
+      } else {
+        navigate("/catalogo");
+      }
     }
   }, [user, navigate]);
 
@@ -35,9 +39,13 @@ export default function Login() {
   async function onSubmit(data) {
     setIsSubmitting(true);
     try {
-      await login(data.email, data.password);
+      const userData = await login(data.email, data.password);
       toast.success("Inicio de sesión exitoso");
-      navigate("/dashboard");
+      if (userData && userData.role === "admin") {
+        navigate("/admin/dashboard");
+      } else {
+        navigate("/catalogo");
+      }
     } catch (error) {
       console.error("[Auth] Login error:", error.code, error.message);
       const messages = {

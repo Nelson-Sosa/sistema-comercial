@@ -1,9 +1,11 @@
 import { Outlet, Link } from "react-router-dom";
-import { LogIn } from "lucide-react";
+import { LogIn, LayoutDashboard } from "lucide-react";
 import WhatsappFloat from "./WhatsappFloat";
 import { BRAND } from "../../config/brand";
+import { useAuth } from "../../context/AuthContext";
 
 export default function PublicLayout() {
+  const { user } = useAuth();
   return (
     <div className="min-h-screen bg-background-secondary">
       <header className="sticky top-0 z-40 border-b border-border bg-white/80 shadow-sm backdrop-blur-md">
@@ -24,14 +26,25 @@ export default function PublicLayout() {
             </div>
           </Link>
 
-          <Link
-            to="/login"
-            className="inline-flex shrink-0 items-center gap-1.5 rounded-xl border border-border bg-white px-4 py-2 text-sm font-medium text-gray-600 shadow-sm transition-all hover:border-primary hover:text-primary hover:shadow-md"
-          >
-            <LogIn className="h-4 w-4" />
-            <span className="hidden sm:inline">Iniciar sesión</span>
-            <span className="sm:hidden">Ingresar</span>
-          </Link>
+          {user ? (
+            <Link
+              to="/admin/dashboard"
+              className="inline-flex shrink-0 items-center gap-1.5 rounded-xl border border-primary bg-primary px-4 py-2 text-sm font-medium text-white shadow-sm transition-all hover:bg-primary-dark hover:shadow-md"
+            >
+              <LayoutDashboard className="h-4 w-4" />
+              <span className="hidden sm:inline">Ir al Panel</span>
+              <span className="sm:hidden">Panel</span>
+            </Link>
+          ) : (
+            <Link
+              to="/login"
+              className="inline-flex shrink-0 items-center gap-1.5 rounded-xl border border-border bg-white px-4 py-2 text-sm font-medium text-gray-600 shadow-sm transition-all hover:border-primary hover:text-primary hover:shadow-md"
+            >
+              <LogIn className="h-4 w-4" />
+              <span className="hidden sm:inline">Iniciar sesión</span>
+              <span className="sm:hidden">Ingresar</span>
+            </Link>
+          )}
         </div>
       </header>
 
