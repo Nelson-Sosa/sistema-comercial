@@ -14,14 +14,21 @@ export async function ensureUserDoc(uid, email) {
     const userData = {
       uid,
       email,
-      role: "user",
+      role: email === "demo.admin@ejemplo.com" ? "admin" : "user",
       createdAt: serverTimestamp(),
     };
     await setDoc(doc(db, "users", uid), userData);
     return { uid, ...userData, createdAt: new Date().toISOString() };
   }
 
-  return { uid, ...userDoc.data(), id: uid };
+  const data = userDoc.data();
+  // Asegurar que la cuenta de demostración siempre tenga rol de admin
+  if (email === "demo.admin@ejemplo.com" && data.role !== "admin") {
+    await setDoc(doc(db, "users", uid), { role: "admin" }, { merge: true });
+    data.role = "admin";
+  }
+
+  return { uid, ...data, id: uid };
 }
 
 export async function registerWithEmailPassword(email, password) {
