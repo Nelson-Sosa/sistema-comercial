@@ -95,6 +95,5 @@ Este proyecto fue concebido y desarrollado como una aplicación práctica orient
 
 **Nelson Sosa**  
 *Estudiante de 4.º año de Licenciatura en Informática y Desarrollador Full Stack MERN.*
-
-[![LinkedIn](https://www.linkedin.com/in/nelson-sosa-b9b901398/)
+[![LinkedIn]\([https://www.linkedin.com/in/nelson-sosa-b9b901398/](https://www.linkedin.com/in/nelson-sosa-b9b901398/))
 
