@@ -7,7 +7,7 @@
 
 > Aplicación web Full Stack para la gestión comercial de pequeños y medianos negocios. Cuenta con un catálogo público y un panel administrativo protegido mediante autenticación y roles de usuario.
 
-🔗 **[🚀 Probar Demo](https://sistema-comercial-cab54.web.app/catalogo)** | 🎥 **[Video Demostrativo](https://youtu.be/NElaI9GQcUw)**
+🔗 **[🚀 Probar Demo](https://sistema-comercial-cab54.web.app/catalogo)** | 🎥 **[Video Demostrativo](https://www.youtube.com/watch?v=NElaI9GQcUw)**
 
 ---
 
@@ -16,8 +16,8 @@
 Para probar las funcionalidades del panel administrativo, utiliza la siguiente cuenta de demostración:
 
 - **Rol:** Administrador
-- **Correo:** `demo.admin@ejemplo.com`
-- **Contraseña:** `TU_CONTRASEÑA_DE_DEMO` *(Reemplazar con la contraseña real en caso de ser necesario)*
+- **Correo:** `admin@gamil.com`
+- **Contraseña:** `password2026` 
 
 > ⚠️ **Nota:** Esta cuenta es exclusivamente para demostración y utiliza datos de prueba. No contiene información personal, comercial ni credenciales reales.
 
@@ -96,5 +96,5 @@ Este proyecto fue concebido y desarrollado como una aplicación práctica orient
 **Nelson Sosa**  
 *Estudiante de 4.º año de Licenciatura en Informática y Desarrollador Full Stack MERN.*
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/nelson-sosa-b9b901398/)
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Nelson-Sosa)
+[![LinkedIn](https://www.linkedin.com/in/nelson-sosa-b9b901398/)
+
