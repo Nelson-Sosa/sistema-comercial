@@ -16,7 +16,7 @@
 Para probar las funcionalidades del panel administrativo, utiliza la siguiente cuenta de demostración:
 
 - **Rol:** Administrador
-- **Correo:** `admin@gamil.com`
+- **Correo:** `admin@gmail.com`
 - **Contraseña:** `password2026` 
 
 > ⚠️ **Nota:** Esta cuenta es exclusivamente para demostración y utiliza datos de prueba. No contiene información personal, comercial ni credenciales reales.
